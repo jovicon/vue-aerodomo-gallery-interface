@@ -7,8 +7,8 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Noticias</b-nav-item>
-          <b-nav-item href="#">Categorias</b-nav-item>
+          <b-nav-item href="https://digitaldesing.cl/aerodomo/admin/articles.php">Noticias</b-nav-item>
+          <b-nav-item href="https://digitaldesing.cl/aerodomo/admin/categories.php">Categorias</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -69,6 +69,14 @@
       },
       deleteUploadedFile: function (fileRecord) {
         // Using the default uploader. You may use another uploader instead.
+        console.log(fileRecord)
+
+        let url = 'https://digitaldesing.cl/aerodomo/admin/routes/api.php'
+        this.axios.delete(url, { data: { my_key: fileRecord.key } } )
+        .then((response) => {
+          console.log(response)
+        })
+
         this.$refs.vueFileAgent.deleteUpload(this.uploadUrl, this.uploadHeaders, fileRecord);
       },
       filesSelected: function (fileRecordsNewlySelected) {
@@ -93,6 +101,22 @@
           this.deleteUploadedFile(fileRecord);
         }
       },
+      getFileRecords() {
+        let url = 'https://digitaldesing.cl/aerodomo/admin/routes/api.php'
+
+        var body = new FormData();
+        body.append("from", "getFileRecords")
+
+        this.axios.post(url,body)
+        .then((response) => {
+          console.log(response)
+          this.fileRecords = response.data
+        })
+      }
     },
+    created() {
+      // `this` hace referencia a la instancia vm
+      this.getFileRecords()
+    }
   };
 </script>
