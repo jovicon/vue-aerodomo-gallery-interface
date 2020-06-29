@@ -67,7 +67,22 @@
 
             <b-form-group
               id="input-group-1"
-              label="Mensaje:"
+              label="Mensaje Español:"
+              label-for="input-1"
+              description="Cambie el texto y presione el boton guardar."
+            >
+              <b-form-textarea
+                id="input-1"
+                v-model="messageFile.mensaje"
+                type="text"
+                required
+                placeholder="Inserte un mensaje"
+              ></b-form-textarea>
+            </b-form-group>
+
+            <b-form-group
+              id="input-group-1"
+              label="Mensaje Ingles:"
               label-for="input-1"
               description="Cambie el texto y presione el boton guardar."
             >
