@@ -7,8 +7,8 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="https://digitaldesing.cl/aerodomo/admin/articles.php">Noticias</b-nav-item>
-          <b-nav-item href="https://digitaldesing.cl/aerodomo/admin/categories.php">Categorias</b-nav-item>
+          <!-- <b-nav-item href="https://www.aerodomo.com/admin/articles.php">Noticias</b-nav-item> -->
+          <!-- <b-nav-item href="https://www.aerodomo.com/admin/categories.php">Categorias</b-nav-item> -->
 
           <b-button size="sm" class="my-2 my-sm-0" type="submit"  @click="$bvModal.show('bv-modal-example')">Agregar nueva imagen</b-button>
 
@@ -170,7 +170,7 @@
     data: function () {
       return {
         fileRecords: [],
-        uploadUrl: 'https://digitaldesing.cl/aerodomo/admin/routes/api.php',
+        uploadUrl: 'https://www.aerodomo.com/admin/routes/api.php',
         // uploadHeaders: { 'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbTL' },
         fileRecordsForUpload: [],
         messageFile: {}
@@ -182,13 +182,13 @@
         this.$refs.vueFileAgent.upload(this.uploadUrl, this.uploadHeaders, this.fileRecordsForUpload);
         this.fileRecordsForUpload = [];
 
-        setTimeout(() => location.reload(), 5000);
+        setTimeout(() => location.reload(), 12000);
       },
       deleteUploadedFile: function (fileRecord) {
         // Using the default uploader. You may use another uploader instead.
         console.log(fileRecord)
 
-        let url = 'https://digitaldesing.cl/aerodomo/admin/routes/api.php'
+        let url = 'https://www.aerodomo.com/admin/routes/api.php'
         this.axios.delete(url, { data: { my_key: fileRecord.key } } )
         .then((response) => {
           console.log(response)
@@ -201,7 +201,7 @@
         // Using the default uploader. You may use another uploader instead.
         console.log(fileRecord)
 
-        let url = 'https://digitaldesing.cl/aerodomo/admin/routes/api.php'
+        let url = 'https://www.aerodomo.com/admin/routes/api.php'
         this.axios.delete(url, { data: { my_key: fileRecord.key } } )
         .then((response) => {
           console.log(response)
@@ -233,7 +233,7 @@
         }
       },
       getFileRecords() {
-        let url = 'https://digitaldesing.cl/aerodomo/admin/routes/api.php'
+        let url = 'https://www.aerodomo.com/admin/routes/api.php'
 
         var body = new FormData();
         body.append("from", "getFileRecords")
@@ -247,7 +247,7 @@
       onSubmitMessage(event){
         event.preventDefault()
 
-        let url = 'https://digitaldesing.cl/aerodomo/admin/routes/api.php'
+        let url = 'https://www.aerodomo.com/admin/routes/api.php'
 
         var body = new FormData();
         body.append("from", "updateFileRecords")
